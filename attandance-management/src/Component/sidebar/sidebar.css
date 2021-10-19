@@ -1,0 +1,9 @@
+.box:hover{
+    background: rgb(7, 110, 179); /* make this whatever you want */
+ }
+ .sidebar {
+    display: table-cell;
+    width: 15%;
+    vertical-align: top;
+    background-color: #058ece;
+}
