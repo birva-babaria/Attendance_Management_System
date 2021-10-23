@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import react from "react";
 import "./login.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -26,8 +25,8 @@ const Login = ({ setLoginUser }) => {
         axios.post("http://localhost:8080/login", user)
             .then(res => {
                 alert(res.data.message)
+                console.log(res.data.user)
                 setLoginUser(res.data.user)
-                history.push("/")
             })
     }
 

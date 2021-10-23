@@ -7,11 +7,13 @@ const userSchema = mongoose.Schema({
     email: String,
     category: String,
     status: String,
-    
+    date: String  
 });
 
 autoIncrement.initialize(mongoose.connection);
 userSchema.plugin(autoIncrement.plugin, 'employee');
+
+
 // we need to turn it into a model
 const postUser = mongoose.model('employee', userSchema);
 

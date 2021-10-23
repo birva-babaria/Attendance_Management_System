@@ -1,24 +1,26 @@
 
 .container {
-    position: relative;
-  }
-  
-.child {
-    /* Center vertically and horizontally */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: 0 0 0 0; /* apply negative top and left margins to truly center the element */
-    margin-top: 180px;
-    margin-right: 200px;
-    margin-left: -300px;
-  }
+  position: relative;
+  max-width: 1500px;
+}
 
-  
-  .outercontainer {
-    position: absolute;
-    width : 300px;
-    top : -150px;
-    left: -200px;
-    margin: 20 0 0 50px;
-  }
+.child {
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0 0 0 0; /* apply negative top and left margins to truly center the element */
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: -30px;
+}
+
+
+.outercontainer {
+  position: absolute;
+ width: 900px;
+ top: -150px;
+ left: 400px;
+ margin: 5px 0;
+
+}

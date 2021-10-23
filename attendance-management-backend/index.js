@@ -15,6 +15,8 @@ const URL = 'mongodb://localhost:27017/attendancemanagementDB',
 
  PORT =  8080; 
 
+
+
  //user schema
 const userschema = mongoose.Schema({
     name: String,
@@ -67,6 +69,7 @@ app.post("/register",(req, res) => {
         }
     })
 })
+
 
 
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(() => { 

@@ -5,11 +5,14 @@ import { useHistory } from 'react-router-dom';
 import Sidebar from '../sidebar/sidebar';
 import './AddEmp.css';
 
+
+
 const initialValue = {
     name: '',
     email: '',
-    category:'',
-    status:'',
+    category: '',
+    status: '',
+    date: '',
 }
 
 const useStyles = makeStyles({
@@ -25,7 +28,7 @@ const useStyles = makeStyles({
 
 const AddEmp = () => {
     const [user, setUser] = useState(initialValue);
-    const { name, email, category,status } = user;
+    const { name, email, category, status ,date} = user;
     const classes = useStyles();
     let history = useHistory();
 
@@ -63,6 +66,13 @@ const AddEmp = () => {
                                 <InputLabel htmlFor="my-input">Status</InputLabel>
                                 <Input onChange={(e) => onValueChange(e)} name='status' value={status} id="my-input" />
                             </FormControl>
+                            <FormControl>
+                            <InputLabel htmlFor="my-input" >Date</InputLabel>
+                                <Input name='date'  id="my-input"
+                                    onChange={(e) => onValueChange(e)} 
+                                    value={date}
+                                />
+                             </FormControl>
                             <FormControl>
                                 <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add Record</Button>
                             </FormControl>

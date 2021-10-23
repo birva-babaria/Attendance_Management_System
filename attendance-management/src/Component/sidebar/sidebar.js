@@ -1,9 +1,11 @@
 import React from "react";
 import "./sidebar.css";
 
-const Sidebar = ({ setLoginUser }) => {
+const Sidebar = () => {
+    
     return (
         //SIDE-BAR
+        
             <div className="sidebar">
                 <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
                     style={{ width: '280px', height: '100%', position: 'fixed' }}>
@@ -46,12 +48,11 @@ const Sidebar = ({ setLoginUser }) => {
                             <strong>ADMIN</strong>
                         </a>
                         <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a className="dropdown-item" href="#">Profile</a></li>
-                            <li><a className="dropdown-item" href="#">Settings</a></li>
+                            <li><a className="dropdown-item" href="/profile">Profile</a></li>
                             <li>
                                 <hr className="dropdown-divider" />
                             </li>
-                            <li><a className="dropdown-item" href="/login" onClick={() => setLoginUser({})}>Log out</a></li>
+                            <li><a className="dropdown-item" href="/login" >Log out</a></li>
                         </ul>
                     </div>
                 </div>

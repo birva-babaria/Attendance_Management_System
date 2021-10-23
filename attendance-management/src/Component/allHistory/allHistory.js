@@ -1,59 +1,30 @@
 import react, { useState, useEffect } from 'react';
-import { Table, TableHead, TableCell, Paper, TableRow, TableBody, Button, makeStyles, Typography } from '@material-ui/core'
-import { getUsers, deleteUser } from '../../Service/api';
-import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar/sidebar';
 import "./allHistory.css"
-
-const useStyles = makeStyles({
-    table: {
-        width: '100%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: 20,
-        borderCollapse: 'collapse',
-        fontSize: 0.9,
-        fontFamily: 'sans - serif',
-        minWidth: 400,
-        boxShadow: '0 0 20 rgba(0, 0, 0, 0.15)',
-        textAlign: 'center',
-    },
-thead: {
-    '& > *': {
-        fontSize: 20,
-            background: '#058ece',
-                color: '#FFFFFF',
-                textAlign: 'center',
-        }
-},
-row: {
-    '& > *': {
-        fontSize: 15,
-        textAlign: 'center',
-    }
-}
-})
+import Datatable from '../datatable';
+require("es6-promise").polyfill()
+require("isomorphic-fetch")
 
 
 const AllHistory = () => {
+    const [data, setData] = useState([]);
+    const [q, setQ] = useState("");
 
-    const [users, setUsers] = useState([]);
-    const classes = useStyles();
 
     useEffect(() => {
-        getAllUsers();
+        fetch("http://localhost:8080/users")
+            .then(response => response.json())
+            .then((json) => setData(json))
     }, []);
 
-    const deleteUserData = async (id) => {
-        await deleteUser(id);
-        getAllUsers();
+    function search(rows) {
+        const colums = rows[0] && Object.keys(rows[0]);
+        return rows.filter((row) =>
+           colums.some(
+               (column) => row[column].toString().toLowerCase().indexOf(q.toLowerCase())> -1
+               )
+            );
     }
-
-    const getAllUsers = async () => {
-        let response = await getUsers();
-        setUsers(response.data);
-    }
-
 
     return (
         <div>
@@ -61,7 +32,20 @@ const AllHistory = () => {
             <div className="outercontainer">
                 <div class="container">
                     <div class="child">
-                       <h1>ALL HISTORY</h1>
+                        <h2>ALL HISTORY</h2>
+                         <br/>
+                            <div class="container-fluid">
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="text" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search here..." aria-label="Search" />
+                                    <button  type="button" class="btn btn-dark">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#657789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                        </button>
+                                </form>
+                            </div>
+                    
+                        <div>
+                            <Datatable data={search(data)} />
+                        </div>
                     </div>
                 </div>
             </div>

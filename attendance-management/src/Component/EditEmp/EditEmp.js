@@ -9,6 +9,7 @@ const initialValue = {
     email: '',
     category: '',
     status:'',
+    date:''
 }
 
 const useStyles = makeStyles({
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 
 const EditEmp = () => {
     const [user, setUser] = useState(initialValue);
-    const { name, email,category,status } = user;
+    const { name, email,category,status,date} = user;
     const { id } = useParams();
     const classes = useStyles();
     let history = useHistory();
@@ -70,6 +71,10 @@ const EditEmp = () => {
                             <FormControl>
                                 <InputLabel htmlFor="my-input">Status</InputLabel>
                                 <Input onChange={(e) => onValueChange(e)} name='status' value={status} id="my-input" aria-describedby="my-helper-text" />
+                            </FormControl>
+                            <FormControl>
+                                <InputLabel htmlFor="my-input">Date</InputLabel>
+                                <Input onChange={(e) => onValueChange(e)} name='date' value={date} id="my-input" aria-describedby="my-helper-text" />
                             </FormControl>
                             <FormControl>
                                 <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
