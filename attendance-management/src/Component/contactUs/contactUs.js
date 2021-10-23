@@ -19,7 +19,7 @@ const Contactus = () => {
                                         <img src="https://image.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg" style={{ width: 400 }} />
                                     </div>
                                     <div class="column">
-                                        <form action="/action_page.php">
+                                        <form action="#">
                                             <label for="fname">First Name</label>
                                             <input type="text" id="fname" name="firstname" placeholder="Your name.." />
                                             <label for="lname">Last Name</label>
