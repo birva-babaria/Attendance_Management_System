@@ -58,7 +58,7 @@ const AllEmp = () => {
             <div className="outercontainer">
                 <div class="container">
                     <div class="child">
-                        <Typography variant="h4">Employee List</Typography>
+                        <Typography variant="h4">EMPLOYEE LIST</Typography>
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow className={classes.thead}>
